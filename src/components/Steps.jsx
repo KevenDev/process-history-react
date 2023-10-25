@@ -100,7 +100,7 @@ const Steps = ()=>{
               </svg>
             </div>
             <div className="flex-grow pl-4">
-              <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 1</h2>
+              <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">SOLICITAÇÃO RECEBIDA</h2>
               <p className="leading-relaxed">VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk bespoke try-hard cliche palo santo offal.</p>
             </div>
           </div>
@@ -114,7 +114,7 @@ const Steps = ()=>{
               </svg>
             </div>
             <div className="flex-grow pl-4">
-              <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 2</h2>
+              <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">VERIFICAÇÃO DE DOCUMENTOS</h2>
               <p className="leading-relaxed">Vice migas literally kitsch +1 pok pok. Truffaut hot chicken slow-carb health goth, vape typewriter.</p>
             </div>
           </div>
@@ -128,7 +128,7 @@ const Steps = ()=>{
 </svg>
             </div>
             <div className="flex-grow pl-4">
-              <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 3</h2>
+              <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">ANÁLISE DA PROPOSTA</h2>
               <p className="leading-relaxed">Coloring book nar whal glossier master cleanse umami. Salvia +1 master cleanse blog taiyaki.</p>
             </div>  
           </div>
@@ -143,7 +143,7 @@ const Steps = ()=>{
               </svg>
             </div>
             <div className="flex-grow pl-4">
-              <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 4</h2>
+              <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">TRAMITE DE SOLICITAÇÃO</h2>
               <p className="leading-relaxed">VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk bespoke try-hard cliche palo santo offal.</p>
             </div>
           </div>
@@ -155,12 +155,12 @@ const Steps = ()=>{
               </svg>
             </div>
             <div className="flex-grow pl-4">
-              <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">FINISH</h2>
+              <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">PATROCÍNIO APROVADO</h2>
               <p className="leading-relaxed">Pitchfork ugh tattooed scenester echo park gastropub whatever cold-pressed retro.</p>
             </div>
           </div>
         </div>
-        <img className="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12" src="https://i.ytimg.com/vi/aqayamHtrkc/maxresdefault.jpg" alt="step"/>
+        <img className="lg:w-3/5 md:w-1/2 object-contain object-center rounded-lg md:mt-0 mt-12" src="https://i.ytimg.com/vi/aqayamHtrkc/maxresdefault.jpg" alt="step"/>
       </div>
     </div>
   </section>
