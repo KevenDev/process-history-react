@@ -5,9 +5,13 @@ import { Header } from "../components/Header";
 const Home = () => {
   return (
     <>
-      <Header/>
-        <Outlet/>
-      <Footer/>
+      <div className="flex flex-col min-h-screen">
+        <Header/>
+          <main className="flex-1">
+            <Outlet/>
+          </main>
+        <Footer/>
+      </div>
     </>
   )
 }

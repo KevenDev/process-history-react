@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@base/react": "^1.88.4",
+    "@emotion/react": "^11.11.1",
     "crypto-js": "^4.1.1",
     "date-fns": "^2.30.0",
     "jquery": "^3.6.3",
     "oauth-1.0a": "^2.2.6",
     "react": "^18.2.0",
+    "react-awesome-reveal": "^4.2.5",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.17.0",
     "zustand": "^4.4.4"
