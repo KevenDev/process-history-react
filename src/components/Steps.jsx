@@ -5,6 +5,7 @@ import { useHistoryProcess } from "../store/historyProcess";
 import { useState } from "react";
 import { Slide, Zoom } from "react-awesome-reveal";
 import svgNotFound from "../assets/svgNotFound.svg"
+import searchSvg from "../assets/searchSvg.svg"
 
 const Steps = () => {
 
@@ -17,6 +18,7 @@ const Steps = () => {
   const [tramite, setTramite] = useState(null)
   const [interesse, setInteresse] = useState(null)
   const [patrocinioAprovado, setPatrocinioAprovado] = useState(null)
+  const [showNotFound, setShowNotFound] = useState(false);
   const updateHistory = useHistoryProcess((state) => state.updateHistory);
   const getHistory = useHistoryProcess((state) => state.history)
   //CONSUMINDO API
@@ -33,7 +35,6 @@ const Steps = () => {
       },
       nonce_length: 6
     });
-
 
     var request_data = {
       url: 'http://10.26.4.22:8080/api/public/ecm/dataset/datasets',
@@ -64,6 +65,7 @@ const Steps = () => {
       headers: oauth.toHeader(oauth.authorize(request_data, token))
     }).done(function (data) {
       if (dataset == "processHistory") {
+        setShowNotFound(true)
         updateHistory(data);
         verificaRecebimento(data)
         verificaDocumentacao(data)
@@ -71,11 +73,10 @@ const Steps = () => {
         tramiteSolicitacao(data)
         aprovadoPatrocinio(data)
         interessePatrocinio(data)
+        console.log(data);
       } if (dataset == "processTask") {
         verificaSolicitacaoPatrocinio(data)
       }
-
-      console.log(data);
     });
 
   }
@@ -83,7 +84,6 @@ const Steps = () => {
   //CONSUMO DA FUNÇÃO GENERICA		
 
   const fetchApi = () => {
-
     var filtro = [{
       _field: "processInstanceId",
       _initialValue: userProcessNumber,
@@ -113,6 +113,7 @@ const Steps = () => {
   const verificaSolicitacaoPatrocinio = (data) => {
     const dataItem = data?.content?.values?.find((atividade) => {
       if (atividade["processTaskPK.colleagueId"] == "solicitacaodepatrocinio2") {
+        setShowNotFound(true)
         return atividade
       }
     })
@@ -164,7 +165,6 @@ const Steps = () => {
     setInteresse(dataItem)
   }
 
-
   const aprovadoPatrocinio = (data) => {
     const dataItem = data?.content?.values?.find((atividade) => {
       if (atividade.stateSequence == 91) {
@@ -173,10 +173,6 @@ const Steps = () => {
     })
     setPatrocinioAprovado(dataItem)
   }
-
-
-
-
 
   const horasMovimentacoes = ((data) => {
     const dataHour = new Date(data);
@@ -189,12 +185,10 @@ const Steps = () => {
     return `${diaHour}/${mesHour}/${anoHour} ${horaHour}:${minutosHour}:${segundosHour}`;
   });
 
-  console.log(tramite);
-
   //RETORNANDO O HTML
   return (
     <>
-      <h2 className="text-[1.3rem] font-medium text-gray-700 text-center mt-5 tracking-wider">
+      <h2 className="text-[1.2rem] lg:text-[1.3rem] font-medium text-gray-700 text-center mt-5 tracking-wider">
         Consulte o andamento da solicitação
       </h2>
       <div className="flex justify-center mt-2">
@@ -249,7 +243,7 @@ const Steps = () => {
           <section className="text-gray-600 body-font">
             <div className="container px-5 py-10 mx-auto flex flex-wrap">
               <div className="flex flex-wrap w-full">
-                <div className="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
+                <div className="lg:w-2/5 md:w-1/2 md:pr-10 md:py-4">
                   {recebimento &&
                     <div className="flex relative pb-12">
                       <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
@@ -277,7 +271,7 @@ const Steps = () => {
                     </div>
                     <div className="flex-grow pl-4">
                       <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">VERIFICAÇÃO DE DOCUMENTOS - {horasMovimentacoes(documentacao?.movementDatetime)}</h2>
-                      <p className="leading-relaxed">Sua solicitação está atualmente em processo de verificação de documentos.</p>
+                      <p className="leading-relaxed">Sua solicitação está em processo de verificação de documentos.</p>
                     </div>
                   </div>
                   }
@@ -340,7 +334,7 @@ const Steps = () => {
                         </svg>
                       </div>
                       <div className="flex-grow pl-4">
-                        <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">PATROCÍNIO APROVADO - - {horasMovimentacoes(patrocinioAprovado?.movementDatetime)}</h2>
+                        <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">PATROCÍNIO APROVADO - {horasMovimentacoes(patrocinioAprovado?.movementDatetime)}</h2>
                         <p className="leading-relaxed">Seu patrocínio foi aprovado.</p>
                       </div>
                     </div>
@@ -354,7 +348,25 @@ const Steps = () => {
       }
 
       {
-        !verificaPatrocinio &&
+        !showNotFound &&
+        < Slide key={searchKey}>
+          <div className="grid px-4 bg-white mt-20">
+            <div className="text-center">
+              <img className="w-auto h-56 mx-auto text-black sm:h-48" src={searchSvg} />
+              <h1
+                className="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+              >
+                Pesquise sua solicitaçao !
+              </h1>
+
+              <p className="mt-4 text-gray-500">Acompanhe o andamento da sua solicitação</p>
+            </div>
+          </div>
+        </Slide >
+      }
+
+      {
+        !verificaPatrocinio && showNotFound &&
         < Zoom key={searchKey}>
           <div className="grid  px-4 bg-white mt-20">
             <div className="text-center">
