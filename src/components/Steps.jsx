@@ -353,7 +353,7 @@ const Steps = () => {
         < Slide key={searchKey}>
           <div className="grid px-4 bg-white mt-20">
             <div className="text-center">
-              <img className="w-auto h-56 mx-auto text-black sm:h-48" src={searchSvg} />
+              <img className="w-auto h-56 mx-auto text-black sm:h-52" src={searchSvg} />
               <h1
                 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl"
               >
