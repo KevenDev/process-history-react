@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Slide, Zoom } from "react-awesome-reveal";
 import svgNotFound from "../assets/svgNotFound.svg"
 import searchSvg from "../assets/searchSvg.svg"
+import vivaSergipe from "../assets/vivaSergipe.jpg"
 
 const Steps = () => {
 
@@ -340,7 +341,7 @@ const Steps = () => {
                     </div>
                   }
                 </div>
-                <img className="lg:w-3/5 md:w-1/2 object-contain object-center rounded-lg md:mt-0 mt-12" src="https://i.ytimg.com/vi/aqayamHtrkc/maxresdefault.jpg" alt="step" />
+                <img className="lg:w-3/5 md:w-1/2 object-contain object-center rounded-lg md:mt-0 mt-12" src={vivaSergipe} alt="step" />
               </div>
             </div>
           </section>
